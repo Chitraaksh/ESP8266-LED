@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ESP8266 LED Control</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 60px;
+}
+button {
+  font-size: 32px;
+  width: 220px;
+  height: 90px;
+  margin: 20px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+}
+.on { background: lightgreen; }
+.off { background: tomato; }
+</style>
+</head>
+<body>
+
+<h1>ESP8266 LED</h1>
+
+<button class="on" onclick="hit('on')">ON</button>
+<button class="off" onclick="hit('off')">OFF</button>
+
+<!-- hidden request trigger -->
+<img id="req" style="display:none">
+
+<script>
+const BASE = "https://shirly-nonrealistic-polygamously.ngrok-free.dev";
+
+function hit(cmd) {
+  document.getElementById("req").src =
+    BASE + "/led/" + cmd + "?t=" + Date.now();
+}
+</script>
+
+</body>
+</html>
